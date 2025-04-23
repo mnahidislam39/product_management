@@ -9,7 +9,7 @@
             <button type="submit">Search</button>
         </form>
 
-        <a href="{{ route('products.create') }}" class="btn btn-success mb-3">Create New Product</a>
+        <a href="{{ route('products.create') }}" class="btn btn-success mb-3 text-center">Create New Product</a>
 
         <table class="table table-bordered">
             <thead>
@@ -21,6 +21,7 @@
             </thead>
             <tbody>
                 @forelse ($products as $product)
+
                     <tr>
                         <td>{{ $product->name }}</td>
                         <td>${{ $product->price }}</td>
