@@ -6,7 +6,7 @@
 
         <form method="GET" action="{{ route('products.index') }}" class="mb-3">
             <input type="text" name="search" placeholder="Search by ID or Description..." value="{{ request('search') }}">
-            <button type="submit">Search</button>
+            <button type="submit" class="btn btn-primary btn-sm">Search</button>
         </form>
 
         <a href="{{ route('products.create') }}" class="btn btn-success mb-3 text-center">Create New Product</a>
@@ -14,8 +14,24 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th><a href="?sort=name&direction={{ request('direction') == 'asc' ? 'desc' : 'asc' }}">Name</a></th>
-                    <th><a href="?sort=price&direction={{ request('direction') == 'asc' ? 'desc' : 'asc' }}">Price</a></th>
+                    <th>
+                        <a
+                            href="{{ route('products.index', array_merge(request()->query(), ['sort' => 'name', 'direction' => request('direction') === 'asc' ? 'desc' : 'asc'])) }}">
+                            Name
+                            @if (request('sort') === 'name')
+                                {{ request('direction') === 'asc' ? '⬆️' : '⬇️' }}
+                            @endif
+                        </a>
+                    </th>
+                    <th>
+                        <a
+                            href="{{ route('products.index', array_merge(request()->query(), ['sort' => 'price', 'direction' => request('direction') === 'asc' ? 'desc' : 'asc'])) }}">
+                            Price
+                            @if (request('sort') === 'price')
+                                {{ request('direction') === 'asc' ? '⬆️' : '⬇️' }}
+                            @endif
+                        </a>
+                    </th>
                     <th>Actions</th>
                 </tr>
             </thead>
