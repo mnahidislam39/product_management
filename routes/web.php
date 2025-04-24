@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 // Default homepage route
 Route::get('/', function () {
-    return view('app');
+    return view('products.index');
 });
 
 // Resource route for ProductController (handles CRUD routes)

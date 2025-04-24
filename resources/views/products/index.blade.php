@@ -21,7 +21,6 @@
             </thead>
             <tbody>
                 @forelse ($products as $product)
-
                     <tr>
                         <td>{{ $product->name }}</td>
                         <td>${{ $product->price }}</td>
